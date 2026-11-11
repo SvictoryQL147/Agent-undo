@@ -1,0 +1,9 @@
+{
+  "guard": "log",
+  "logReads": false,
+  "tools": {
+    "run_sql": "write",
+    "create_invoice": "external",
+    "get_weather": "read"
+  }
+}

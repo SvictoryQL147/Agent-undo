@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y", "agent-undo", "wrap", "--root", "/Users/you/project", "--",
+        "npx", "-y", "@modelcontextprotocol/server-filesystem", "/Users/you/project"
+      ]
+    },
+    "demo": {
+      "command": "node",
+      "args": [
+        "/path/to/agent-undo/dist/cli.js", "wrap", "--root", "/Users/you/sandbox", "--",
+        "node", "/path/to/agent-undo/examples/demo-server.mjs", "/Users/you/sandbox"
+      ]
+    }
+  }
+}

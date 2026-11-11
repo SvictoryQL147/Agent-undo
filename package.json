@@ -1,0 +1,40 @@
+{
+  "name": "agent-undo",
+  "version": "0.1.0",
+  "description": "Ctrl+Z for AI agents. A drop-in MCP proxy that snapshots every action so you can roll back anything your agent did.",
+  "type": "module",
+  "bin": {
+    "agent-undo": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "prepublishOnly": "npm test"
+  },
+  "engines": {
+    "node": ">=22.13"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai-agents",
+    "undo",
+    "rollback",
+    "snapshot",
+    "claude",
+    "cursor",
+    "llm",
+    "safety"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.6.0"
+  }
+}
