@@ -5,7 +5,7 @@ import { spawn, execFileSync } from "node:child_process";
 import { mkdtempSync, writeFileSync, existsSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { createInterface } from "node:readline";
 
 const repo = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -87,7 +87,7 @@ test("guard=block stops external actions", async () => {
 });
 
 test("classifier heuristics", async () => {
-  const { classify } = await import(join(repo, "dist", "classify.js"));
+  const { classify } = await import(pathToFileURL(join(repo, "dist", "classify.js")).href);
   const cfg = { tools: { run_sql: "write" } };
   assert.equal(classify("readFile", undefined, cfg), "read");
   assert.equal(classify("send_slack_message", undefined, cfg), "external");
