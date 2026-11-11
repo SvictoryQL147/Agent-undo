@@ -2,8 +2,9 @@
 
 **Ctrl+Z for AI agents.** A drop-in MCP proxy that snapshots your files before every action an agent takes, so you can roll back anything it did — one step, or ten.
 
-<!-- Record this GIF: agent deletes a folder → `agent-undo last` → folder is back. It's the whole pitch. -->
-<!-- ![demo](docs/demo.gif) -->
+![agent-undo demo: an agent deletes files, agent-undo puts them back](docs/demo.gif)
+
+<sub>Real tool calls through the proxy, made by a scripted agent. Reproduce it with `node examples/demo-agent.mjs <folder>`.</sub>
 
 ```
 $ agent-undo list
@@ -62,7 +63,13 @@ npx agent-undo rollback 7     # put files back to just before step 7
 npx agent-undo last           # undo the most recent step
 ```
 
-More examples in [`examples/`](examples).
+More examples in [`examples/`](examples). To see it work without setting up an agent, run the scripted demo agent:
+
+```bash
+npm install && npm run build
+node examples/demo-agent.mjs ./some-test-folder
+node dist/cli.js list --root ./some-test-folder
+```
 
 ## How it works
 
@@ -146,6 +153,7 @@ src/
   jsonrpc.ts    line-delimited JSON-RPC helpers
 examples/
   demo-server.mjs    tiny MCP server for demos and tests
+  demo-agent.mjs     scripted agent that "tidies up" (deletes your files)
 test/
   e2e.test.mjs
 ```
